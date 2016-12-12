@@ -51,6 +51,29 @@ Backward incompatible changes
 
 Adds the Sensu repository, and installs the Sensu package.
 
+Allows the configuration of alternative repositories (i.e. mirrors) using the following syntax:
+```
+## for ubuntu
+sensu:
+  lookup:
+    repos:
+      name: deb http://mysensumirror.org/apt/sensu sensu main
+      key_url: http://mysensumirror.org/apt/sensu/key.gpg
+
+## or for RedHat
+sensu:
+  lookup:
+    repos:
+      baseurl: http://mysensumirror.org/yum/el/$releasever/$basearch/
+
+## or if you don't want the formula to handle the repo for you...
+sensu:
+  lookup:
+    repos:
+      enabled: False
+```
+
+
 ``sensu.server``
 ------------
 
